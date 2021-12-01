@@ -6,3 +6,7 @@ Requires PyTado: `$ pip3 install python-tado`
 
 ## If you want to support me
 [Paypal](https://paypal.me/adrianslabu)
+
+## Docker support
+
+`docker run -e TADO_USERNAME=USERNAME -e TADO_PASSWORD=PASSWORD ghcr.io/lodekennes/tado_aa/agent:latest`
