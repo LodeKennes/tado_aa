@@ -1,0 +1,17 @@
+
+name: Build and Publish Docker
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login -u LodeKennes --password-stdin ghcr.io
+    - name: Build the tagged Docker image
+      run: docker build -f ./Dockerfile -t ghcr.io/lodekennes/tado_aa/agent:latest --cache-from ghcr.io/lodekennes/tado_aa/agent:latest .
+    - name: Push the latest Docker image
+      run: docker push ghcr.io/lodekennes/tado_aa/agent:latest

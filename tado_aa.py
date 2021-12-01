@@ -6,6 +6,7 @@
 import sys
 import time
 import inspect
+import os
 
 from datetime import datetime
 from PyTado.interface import Tado
@@ -23,8 +24,8 @@ def main():
 
     lastMessage = ""
 
-    username = "your_username@mail.com" # tado username
-    password = "your_password" # tado password
+    username = os.getenv('TADO_USERNAME') # tado username
+    password = os.getenv('TADO_PASSWORD') # tado password
 
     checkingInterval = 10.0 # checking interval (in seconds)
     errorRetringInterval = 30.0 # retrying interval (in seconds), in case of an error
