@@ -12,6 +12,6 @@ jobs:
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.GITHUB_TOKEN }} | docker login -u LodeKennes --password-stdin ghcr.io
     - name: Build the tagged Docker image
-      run: docker build -f ./Dockerfile -t ghcr.io/lodekennes/tado_aa/agent:latest --platform linux/amd64,linux/arm64,linux/arm/v7 --cache-from ghcr.io/lodekennes/tado_aa/agent:latest .
+      run: docker buildx build -f ./Dockerfile -t ghcr.io/lodekennes/tado_aa/agent:latest --platform linux/amd64,linux/arm64,linux/arm/v7 --cache-from ghcr.io/lodekennes/tado_aa/agent:latest .
     - name: Push the latest Docker image
       run: docker push ghcr.io/lodekennes/tado_aa/agent:latest
